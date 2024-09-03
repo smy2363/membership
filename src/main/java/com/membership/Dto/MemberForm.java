@@ -1,5 +1,6 @@
 package com.membership.Dto;
 
+import com.membership.Constant.Role;
 import com.membership.Entity.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class SignUpDto {
+public class MemberForm {
     private Long id;
     @NotBlank(message = "아이디는 필수 입니다.")
     private String userId;
