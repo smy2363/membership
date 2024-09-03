@@ -13,4 +13,14 @@ public class MemberControl {
     public String login(Model model){
         return "/member/login";
     }
+
+    @GetMapping("/findId")
+    public String findId(Model model){
+        return "member/findId";
+    }
+
+    @GetMapping("/findPw")
+    public String findPw(Model model){
+        return "member/findPw";
+    }
 }
