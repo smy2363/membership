@@ -23,4 +23,9 @@ public class MemberControl {
     public String findPw(Model model){
         return "member/findPw";
     }
+
+    @GetMapping("/signUp")
+    public String signUp(Model model){
+        return "member/signUp";
+    }
 }
