@@ -22,10 +22,13 @@ public class MemberControl {
     private final PasswordEncoder passwordEncoder;
 
     // 로그인 페이지
-    @GetMapping("/login")
+    @GetMapping("/signIn")
     public String login(Model model){
-                return "/member/login";
+                return "member/login";
     }
+
+
+
 
     // 아이디찾기 페이지
     @GetMapping("/findId")
@@ -61,12 +64,12 @@ public class MemberControl {
             return "member/sighUp";
         }
 
-        return "redirect:/member/login";
+        return "redirect:/member/signIn";
 
     }
 
     // 로그인 실패 - 아이디나 비밀번호 틀린경우
-    @GetMapping("/login/error")
+    @GetMapping("/signIn/error")
     public String loginFail(Model model){
         model.addAttribute("loginFailMsg","아이디 또는 비밀번호가 올바르지 않습니다.");
         return "member/login";
