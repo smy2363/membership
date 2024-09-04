@@ -55,4 +55,5 @@ function joinShow(){
             $(".stage_b").fadeIn(1500);
             $("#terms").fadeOut(1000);
             $("#joinForm").fadeIn(2000);
+
 }
