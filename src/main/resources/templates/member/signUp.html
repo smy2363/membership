@@ -36,6 +36,7 @@
            }).open();
         }
       </script>
+  <ㄴ
 
 </head>
 <body>
@@ -136,6 +137,15 @@
           <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
              class="fieldError"></p>
         </div>
+        <button class="btn btn-outline-primary" type="button" id="checkEmail">인증번호</button>
+        <div class="inputField">
+          <label for="emailCode">E-MAIL 코드인증</label>
+          <input type="email" id="emailCode" class="formInput"
+                 placeholder="인증코드를 입력하세요">
+        </div>
+
+
+
         <div class="inputField">
           <label th:for="name">이름</label>
           <input type="text" th:field="*{name}" class="formInput"
