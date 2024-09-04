@@ -4,6 +4,7 @@ import com.membership.Dto.MemberForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -25,9 +26,9 @@ public class MemberControl {
         return "member/findPw";
     }
 
-    @GetMapping("/signUp")
+    @PostMapping("/signUp")
     public String signUp(Model model){
         model.addAttribute("memberForm",new MemberForm());
-        return "member/signUp";
+        return "member/login";
     }
 }
