@@ -2,12 +2,15 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Title</title>
     <link rel="stylesheet" href="/css/signUp.css">
     <!-- jquery CDN-->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+
       function addrSearch(){
          new daum.Postcode({
               oncomplete: function(data) {
@@ -34,9 +37,8 @@
 
                }
            }).open();
-    </script>
-
-
+      }
+      </script>
 </head>
 <body>
 <script src="/js/signUp.js"></script>
@@ -135,6 +137,13 @@
                  placeholder="Email을 입력하세요">
           <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
              class="fieldError"></p>
+          <button type="button" id="sendBtn" name="sendBtn">인증번호</button>
+        </div>
+        <div class="inputField">
+          <label for="emailCode">E-MAIL 인증 코드</label>
+          <input type="email" id="emailCode" class="formInput"
+                 placeholder="Email 인증코드를 입력하세요">
+          <button type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일 인증</button>
         </div>
 
         <div class="inputField">
@@ -168,4 +177,5 @@
   </div>
 </div>
 </body>
+
 </html>
