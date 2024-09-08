@@ -19,7 +19,6 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class MemberControl {
 
-    @Autowired
     private JavaMailSender javaMailSender;
 
     private final MemberService memberService;
@@ -80,12 +79,6 @@ public class MemberControl {
         return "member/login";
     }
 
-    @ResponseBody
-    @PostMapping("/mail")
-    public String MailSend(String mail){
-        int number = mailService.sendMail(mail);
-        String num = "" + number;
-        return num;
-    }
+
 
 }

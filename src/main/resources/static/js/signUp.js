@@ -74,7 +74,7 @@ function sendNumber(){
     var header = $("meta[name=_csrf_header]").attr("content");
     $("#mail_number").css("display", "block");
         $.ajax({
-            url:"mail",
+            url:"/mail",
             type:"post",
             dataType:"json",
             data:{"mail" : $("#email").val()},
