@@ -3,12 +3,7 @@ $(function(){
         alert("아이디 찾기");
         findId();
     });
-
-
-
-
 });
-
 function findId(){
     var token = $("meta[name=_csrf]").attr("content");
     var header = $("meta[name=_csrf_header]").attr("content");
@@ -28,7 +23,6 @@ function findId(){
                 error:function(){
                     alert("이메일 발송실패");
                 }
-
     });
 
 }
