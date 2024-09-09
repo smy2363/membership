@@ -36,14 +36,14 @@ public class FindPwService {
     }
 
     // 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경
-    public MailDto createMailAndChangePassword(String memberEmail) {
+    public MailDto createMailAndChangePassword(String email) {
         String str = getTempPassword();
         MailDto dto = new MailDto();
-        dto.setAddress(memberEmail);
+        dto.setAddress(email);
         dto.setTitle("임시비밀번호 안내 이메일 입니다.");
         dto.setMessage("안녕하세요. 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
                 + str + " 입니다." + "로그인 후에 비밀번호를 변경해주세요!");
-        updatePassword(str, memberEmail);
+        updatePassword(str, email);
         return dto;
     }
 

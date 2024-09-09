@@ -1,7 +1,7 @@
 $(function(){
     $("#find-pw-bt").click(function(){
         alert("임시 비밀번호 발급");
-        findId();
+        findPw();
     });
 
 
@@ -9,7 +9,7 @@ $(function(){
 
 });
 
-function findId(){
+function findPw(){
     var token = $("meta[name=_csrf]").attr("content");
     var header = $("meta[name=_csrf_header]").attr("content");
     $.ajax({
@@ -22,6 +22,7 @@ function findId(){
                 },
                 success:function(data){
                     alert("해당 이메일로 임시 비밀번호 전송");
+                    location.href="/member/signIn";
 
                 },
                 error:function(){

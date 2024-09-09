@@ -5,6 +5,8 @@ import com.membership.Service.FindIdService;
 import com.membership.Service.FindPwService;
 import com.membership.Service.MailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -27,20 +29,19 @@ public class MailControl {
 
 
     @PostMapping("/findId")
-    public String findId(String email){
-        System.out.println(email);
+    public @ResponseBody ResponseEntity findId(String email){
         findIdService.sendMail(email);
-        return "redirect:/member/signIn";
+        return new ResponseEntity<Integer>(0, HttpStatus.OK);
     }
 
 
     // 비밀번호 찾기시, 임시 비밀번호 담긴 이메일 보내기
     @Transactional
     @PostMapping("/findPw")
-    public String sendEmail(@RequestParam("email") String memberEmail) {
-        MailDto dto = findPwService.createMailAndChangePassword(memberEmail);
+    public @ResponseBody ResponseEntity sendEmail(String email) {
+        MailDto dto = findPwService.createMailAndChangePassword(email);
         findPwService.mailSend(dto);
 
-        return "redirect:/member/signIn";
+        return new ResponseEntity<Integer>(0, HttpStatus.OK);
     }
 }

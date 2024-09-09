@@ -22,6 +22,7 @@ function findId(){
                 },
                 success:function(data){
                     alert("해당 이메일로 아이디 전송");
+                    location.href="/member/signIn";
 
                 },
                 error:function(){
