@@ -32,8 +32,8 @@
                 <a href="/member/signIn"><i class="bi bi-person-circle"></i></a>
             </div>
             <div class="sign" sec:authorize="isAuthenticated()">
-                회원정보
                 <span class="user-id" sec:authentication="name"></span>
+                <a th:href="@{/member/userInfo/{userId}(userId=${#authentication.name})}">회원정보</a>
                 <a href="/member/logout">
                     <i class="bi bi-box-arrow-right"></i>
                 </a>

@@ -1,6 +1,7 @@
 package com.membership.Service;
 
 import com.membership.Dto.MemberForm;
+import com.membership.Dto.UserInfo;
 import com.membership.Entity.Member;
 import com.membership.Repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,12 @@ public class MemberService implements UserDetailsService {
             throw new IllegalArgumentException("이미 가입된 이메일 입니다.");
         }
     }
+
+    public UserInfo getUserInfo(String userName){
+        Member member = memberRepository.findByUserId(userName);
+        return UserInfo.of(member);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
