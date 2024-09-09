@@ -1,7 +1,4 @@
 $(function(){
-    $("#confirmBtn").click(function(){
-        confirmNumber();
-    });
 
     $("#sendBtn").click(function(){
         sendNumber();
@@ -23,6 +20,9 @@ function sendNumber(){
             },
             success:function(data){
                 alert("인증번호 발송");
+                $("#confirmBtn").click(function(){
+                        confirmNumber();
+                });
                 $("#Confirm").attr("value", data);
             },
             error:function(){
@@ -37,9 +37,9 @@ function confirmNumber(){
     var number1 = $("#emailCode").val();
     var number2 = $("#Confirm").val();
 
-    if(number1 == number2){
+    if(number1 == number2 && number1 != '' && number2 != ''){
         alert("인증성공");
-        $("#find-pw-bt").click(function(){
+        $("#find-pw-bt").on('click', function(){
             alert("임시 비밀번호 발급");
             findPw();
         });
