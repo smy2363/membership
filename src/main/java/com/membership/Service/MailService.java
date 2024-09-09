@@ -14,9 +14,16 @@ public class MailService {
     private static final String senderEmail = "smy2363@gmail.com";
     private static int number;
 
+    public int createNumber(){
+        int number = (int)(Math.random() * (90000)) + 100000;
+        return number;
+    }
+
     public MimeMessage createMail(String mail) {
+
         number = createNumber();
         MimeMessage message = javaMailSender.createMimeMessage();
+
 
         try {
             message.setFrom(senderEmail);
@@ -39,12 +46,4 @@ public class MailService {
     }
 
 
-
-
-
-
-    public int createNumber(){
-        int number = (int)(Math.random() * (90000)) + 100000;
-        return number;
-    }
 }
