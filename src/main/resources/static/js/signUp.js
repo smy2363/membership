@@ -60,19 +60,17 @@ function joinShow(){
 
 $(function(){
     $("#sendBtn").click(function(){
-        sendNumber();
-        var num1 = $("#mail").val();
-        var num2 = $("#Confirm").val();
-
-
+        if($("#email").val() != ''){
+            sendNumber();
+        }else{
+            alert("이메일을 입력해주세요");
+        }
     });
-
-
 });
+
 function sendNumber(){
     var token = $("meta[name=_csrf]").attr("content");
     var header = $("meta[name=_csrf_header]").attr("content");
-    $("#mail_number").css("display", "block");
         $.ajax({
             url:"/mail",
             type:"post",
@@ -83,25 +81,27 @@ function sendNumber(){
             },
             success:function(data){
                 alert("인증번호 발송");
+                //인증번호 확인버튼 활성화
+                $("#confirmBtn").click(function(){
+                    confirmNumber();
+                });
                 $("#Confirm").attr("value", data);
             },
             error:function(){
                 alert("인증번호 발송실패");
-                console.log($("#email").val());
             }
 
         });
 }
 
+//인증번호 확인
 function confirmNumber(){
     var number1 = $("#emailCode").val();
     var number2 = $("#Confirm").val();
 
-    console.log(number1);
-    console.log(number2);
-
-    if(number1 == number2){
+    if(number1 == number2 && number1 != '' && number2 != ''){
         alert("인증성공");
+        $("#btn-join").attr("type", "submit");
     }else{
         alert("인증실패");
     }

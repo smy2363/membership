@@ -1,11 +1,14 @@
 $(function(){
-
     $("#sendBtn").click(function(){
-        sendNumber();
+        if($("#email").val() != ''){
+            sendNumber();
+        }else{
+            alert("이메일을 입력해주세요");
+        }
     });
-
-
 });
+
+//인증코드 전송
 function sendNumber(){
     var token = $("meta[name=_csrf]").attr("content");
     var header = $("meta[name=_csrf_header]").attr("content");
@@ -20,6 +23,7 @@ function sendNumber(){
             },
             success:function(data){
                 alert("인증번호 발송");
+                //인증번호 확인버튼 활성화
                 $("#confirmBtn").click(function(){
                         confirmNumber();
                 });
@@ -33,6 +37,7 @@ function sendNumber(){
         });
 }
 
+//인증번호 확인
 function confirmNumber(){
     var number1 = $("#emailCode").val();
     var number2 = $("#Confirm").val();
@@ -49,6 +54,7 @@ function confirmNumber(){
     }
 }
 
+//비밀번호 찾기
 function findPw(){
     var token = $("meta[name=_csrf]").attr("content");
     var header = $("meta[name=_csrf_header]").attr("content");
