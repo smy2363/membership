@@ -79,6 +79,11 @@ public class MemberControl {
         return "member/login";
     }
 
+    @GetMapping("/changePw")
+    public String changePw(){
+        return "member/changePw";
+    }
+
 
 
 }

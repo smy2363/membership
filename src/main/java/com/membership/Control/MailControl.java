@@ -3,6 +3,8 @@ package com.membership.Control;
 import com.membership.Service.FindIdService;
 import com.membership.Service.MailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +26,18 @@ public class MailControl {
 
 
     @PostMapping("/findId")
-    public String findId(String email){
+    public @ResponseBody ResponseEntity findId(String email){
         System.out.println(email);
         findIdService.sendMail(email);
-        return "redirect:/member/signIn";
+        return new ResponseEntity<Integer>(0, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @PostMapping("/findPw")
+    public String findPw(String mail){
+        System.out.println("wwwwwwwwwwww"+mail);
+        int number = mailService.sendMail(mail);
+        String num = "" + number;
+        return num;
     }
 }

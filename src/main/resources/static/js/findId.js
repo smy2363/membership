@@ -22,10 +22,10 @@ function findId(){
                 },
                 success:function(data){
                     alert("해당 이메일로 아이디 전송");
-
+                    location.href="/member/signIn";
                 },
-                error:function(){
-                    alert("이메일 발송실패");
+                error: function( request, status, error ){
+                    alert("status : " + request.status + ", message : " + request.responseText + ", error : " + error);
                 }
 
     });
