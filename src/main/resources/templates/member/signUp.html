@@ -153,6 +153,8 @@
           <label th:for="name">이름</label>
           <input type="text" th:field="*{name}" class="formInput"
                  placeholder="이름을 입력하세요">
+          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+             class="fieldError"></p>
         </div>
 
         <div class="inputField">
@@ -164,11 +166,15 @@
           <label th:for="addr1">기본주소</label>
           <input type="text" th:field="*{addr1}" class="formInputLong"
                  placeholder="주소를 검색 해주세요">
+          <p th:if="${#fields.hasErrors('addr1')}" th:errors="*{addr1}"
+             class="fieldError"></p>
         </div>
         <div class="inputField">
           <label th:for="addr2">상세주소</label>
           <input type="text" th:field="*{addr2}" class="formInputLong"
                  placeholder="상세주소를 입력해주세요">
+          <p th:if="${#fields.hasErrors('addr2')}" th:errors="*{addr2}"
+             class="fieldError"></p>
         </div>
 
         <div class="joinBt">

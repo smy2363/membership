@@ -22,9 +22,16 @@ public class MemberForm {
     @Size(min=4 , max=12, message="비밀번호는 4~12자리 입니다.")
     private String password;
 
+    @NotBlank(message = "이름은 필수 입니다.")
     private String name;
+
+    @NotBlank(message = "주소를 입력해주세요.")
     private String addr1; // 주소
+
+    @NotBlank(message = "상세주소를 입력해주세요.")
     private String addr2; // 상세주소
+
+
     private int zipCode;  // 우편번호
 
     // DTO -> Entity (회원가입시 동작 메서드)
