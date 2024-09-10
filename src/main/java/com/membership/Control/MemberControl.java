@@ -1,6 +1,7 @@
 package com.membership.Control;
 
 import com.membership.Dto.MemberForm;
+import com.membership.Dto.UserInfo;
 import com.membership.Service.MailService;
 import com.membership.Service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -77,6 +78,13 @@ public class MemberControl {
     public String loginFail(Model model){
         model.addAttribute("loginFailMsg","아이디 또는 비밀번호가 올바르지 않습니다.");
         return "member/login";
+    }
+
+    @GetMapping("/userInfo/{userName}")
+    public String userInfo(@PathVariable("userName") String userName, Model model){
+        UserInfo userInfo = memberService.getUserInfo(userName);
+        model.addAttribute("userInfo",userInfo);
+        return "member/userInfo";
     }
 
 
