@@ -14,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/member")
@@ -81,7 +83,10 @@ public class MemberControl {
     }
 
     @GetMapping("/userInfo/{userName}")
-    public String userInfo(@PathVariable("userName") String userName, Model model){
+    public String userInfo(@PathVariable("userName") String userName, Model model, Principal principal){
+        if(!Objects.equals(principal.getName(), userName)){
+            return "redirect:/";
+        }
         UserInfo userInfo = memberService.getUserInfo(userName);
         model.addAttribute("userInfo",userInfo);
         return "member/userInfo";
